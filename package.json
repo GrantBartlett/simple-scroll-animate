@@ -19,11 +19,6 @@
         "analyze": "size-limit --why"
     },
     "peerDependencies": {},
-    "husky": {
-        "hooks": {
-            "pre-commit": "tsdx lint"
-        }
-    },
     "name": "simple-scroll-animate",
     "author": "Grant Bartlett",
     "module": "dist/simple-scroll-animate.esm.js",
