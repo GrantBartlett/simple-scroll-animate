@@ -1,4 +1,4 @@
-<span class="badge-npmversion"><a href="https://www.npmjs.com/package/simple-scroll-animate" title="View this project on NPM"><img src="https://img.shields.io/npm/v/badges.svg" alt="NPM version" /></a></span>
+[![npm version](https://badge.fury.io/js/simple-scroll-animate.svg)](https://badge.fury.io/js/simple-scroll-animate)
 
 # Simple Scroll Animate
 
@@ -18,7 +18,7 @@ npm install simple-scroll-animate --save
     const scrollAnimator = new ScrollAnimator();
     scrollAnimator.create(document.querySelectorAll(".animate"));
     ```
-3. With each HTML element you want to apply an animation to, add `data-animate-class='your-css-class-name'`. This is CSS class you want applied when the element comes into view. [See the full list of options here.](./Configuration)
+3. With each HTML element you want to apply an animation to, add `data-animate-class='your-css-class-name'`. This is CSS class you want applied when the element comes into view. [See the full list of options here.](#configuration)
     ```html
     <div class="animate" data-animate-class="animate-fade-in">
         Fancy fade in animation!
