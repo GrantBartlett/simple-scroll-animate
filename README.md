@@ -46,9 +46,9 @@ There are a few options you can apply to your elements.
 
 | Config      | Description | Default  | Required  |
 | ----------- | ----------- |--------- | --------- |
-| `data-animate-class="your-css-classname"` | The CSS classname you want applied to your element when it comes into view | no-animation | Yes |
-| `data-animate-once="true"` | Play the animation once, emit to always re-play the animation when in view  | false | optional |
-| `data-animate-threshold="0.5` | A value of 1.0 means that the your CSS animation not play until every pixel of the element is visible in the viewport. The default, 0.5, will play your animation if the visibility passes 50%. | 0.5 |  optional |
+| data-animate-class="your-css-classname" | The CSS classname you want applied to your element when it comes into view | no-animation | Yes |
+| data-animate-once="true" | Play the animation once, emit to always re-play the animation when in view  | false | optional |
+| data-animate-threshold="0.5 | A value of 1.0 means that the your CSS animation will not play until every pixel of the element is visible in the viewport. The default, 0.5, will play your animation if the visibility passes 50%. | 0.5 |  optional |
 
 ## Examples
 For a full list of examples, [go to the examples](/Examples). 
