@@ -8,17 +8,18 @@ Under the hood, it simply utilises the Intersection Observer API and applies you
 
 ## 🚀 Getting started
 
+1. Install with npm or yarn
 ```bash
 npm install simple-scroll-animate --save
 ```
 
-1. Install by running `npm install simple-scroll-animate --save`
-2. Supply the a list of HTML elements you are wanting to track in the viewport and animate. 
+2. Supply the list of HTML elements you are wanting to track in the viewport and animate. 
     ```js
     const scrollAnimator = new ScrollAnimator();
     scrollAnimator.create(document.querySelectorAll(".animate"));
     ```
-3. With each HTML element you want to apply an animation to, add `data-animate-class='your-css-class-name'`. This is CSS class you want applied when the element comes into view. [See the full list of options here.](#configuration)
+3. Add `data-animate-class='your-css-class-name'` to your html element. Pass in the CSS class to be applied when the element comes into view. 
+    [See the full list of options here.](#configuration)
     ```html
     <div class="animate" data-animate-class="animate-fade-in">
         Fancy fade in animation!
@@ -39,6 +40,8 @@ npm install simple-scroll-animate --save
         animation: fadeIn .5s linear both;
     }
     ```
+## Examples & Demo
+For a full list of examples, [go to the examples](/Examples).  To view a demo, [click here](/demo)
 
 
 ## Configuration
@@ -50,8 +53,6 @@ There are a few options you can apply to your elements.
 | data-animate-once="true" | Play the animation once, emit to always re-play the animation when in view  | false | optional |
 | data-animate-threshold="0.5 | A value of 1.0 means that the your CSS animation will not play until every pixel of the element is visible in the viewport. The default, 0.5, will play your animation if the visibility passes 50%. | 0.5 |  optional |
 
-## Examples
-For a full list of examples, [go to the examples](/Examples). 
 
 ## 📝License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
