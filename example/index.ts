@@ -1,10 +1,15 @@
-import { ScrollAnimator } from "simple-scroll-animate";
+// import { ScrollAnimator } from "simple-scroll-animate"; 
+import { ScrollAnimator } from "../";
 
-const scrollAnimator = new ScrollAnimator();
-scrollAnimator.create(document.querySelectorAll(".js-animate"));
-
-const terminate = document.querySelector(".js-dispose-all");
-terminate?.addEventListener("click", function ()
+window.addEventListener("load", () =>
 {
-    scrollAnimator.dispose();
+    const scrollAnimator = new ScrollAnimator();
+    scrollAnimator.create(document.querySelectorAll(".js-animate"));
+
+    const terminate = document.querySelector(".js-dispose-all");
+    terminate?.addEventListener("click", function ()
+    {
+        scrollAnimator.dispose();
+    }, false);
+
 }, false);

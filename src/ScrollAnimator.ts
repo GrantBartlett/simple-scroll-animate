@@ -20,10 +20,9 @@ export class ScrollAnimator
 
         if (this.requestAnimationFrameRunning === false)
         {
+            this.requestAnimationFrameRunning = true;
             window.requestAnimationFrame(this.update.bind(this));
         }
-
-        this.requestAnimationFrameRunning = true;
 
         for (let i = 0; i < elements.length; i++)
         {
@@ -45,10 +44,14 @@ export class ScrollAnimator
         this.animationElements = [];
     }
 
-
     private then: number = 0;
     private update(now: number): void
     {
+        if (this.requestAnimationFrameRunning === false)
+        {
+            return;
+        }
+
         now *= 0.001;
         const deltaTime: number = (now - this.then);
 

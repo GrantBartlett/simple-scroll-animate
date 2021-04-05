@@ -34,7 +34,7 @@ export class AnimatorDelay
         this.timeElapsed = 0;
     }
 
-    public canPlayAnimation(): boolean 
+    public get animatorDelayComplete(): boolean 
     {
         return this.callbackFired;
     }
