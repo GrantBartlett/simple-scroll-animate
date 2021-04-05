@@ -1,0 +1,82 @@
+/* Not required */
+
+  /* Just some basic demo page styling */
+
+html,
+body 
+{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    overflow-x: hidden;
+    padding: 1rem;
+    color: #fff;
+    margin: 0;
+    min-height: 100vh;
+}
+
+body 
+{
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+h1 
+{
+    font-size: 4rem;
+}
+h2 
+{
+    font-size: 3rem;
+}
+h3 
+{
+    font-size: 2rem;
+}
+
+strong 
+{
+    font-size: 1.2rem;
+    line-height: 1.9rem;
+}
+
+p 
+{
+    font-size: 1.2rem;
+    line-height: 1.9rem;
+}
+
+*, ::after, ::before
+{
+    box-sizing: border-box;
+}
+
+a 
+{
+    color: #fff;
+    text-decoration: underline;
+}
+
+.btn,
+button 
+{
+    padding: 1rem;
+    background: #ffffff;
+    color: #36748a;
+    font-weight: 600;
+    border-radius: 4px;
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+.btn:hover,
+button:hover 
+{
+    color: #1e5163;
+} 
