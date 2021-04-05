@@ -125,54 +125,95 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ScrollAnimator = void 0;
 
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
+var AnimatorDelay = /*#__PURE__*/function () {
+  function AnimatorDelay(animateDelay, delayComplete) {
+    this.animateDelay = animateDelay;
+    this.delayComplete = delayComplete;
+    this.timerRunning = false;
+    this.timeElapsed = 0;
+    this.callbackFired = false;
   }
-}
 
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
+  var _proto = AnimatorDelay.prototype;
+
+  _proto.start = function start() {
+    this.timerRunning = true;
+  };
+
+  _proto.update = function update(deltaTime) {
+    if (this.timerRunning === false) return;
+    this.timeElapsed += deltaTime;
+
+    if (this.timeElapsed > this.animateDelay) {
+      this.delayComplete();
+      this.callbackFired = true;
+      this.reset();
+    }
+  };
+
+  _proto.reset = function reset() {
+    this.timerRunning = false;
+    this.timeElapsed = 0;
+  };
+
+  _proto.canPlayAnimation = function canPlayAnimation() {
+    return this.callbackFired;
+  };
+
+  return AnimatorDelay;
+}();
 
 var AnimationElement = /*#__PURE__*/function () {
   function AnimationElement(_htmlElement) {
     this._htmlElement = _htmlElement;
-    this.animationPlaying = false;
-    this.animationPlayedOnce = false;
+    this._hasPlayedOnce = false;
     this._animateOnce = false;
-    this._animateClass = "no-animation";
+    this._animateClass = "animate-in";
     this._animateThreshold = 0.5;
+    this._animateRootMargin = "0px";
+    this._animateDelaySeconds = 0;
+    var animateOnce = this._htmlElement.dataset.animateOnce;
 
-    if (this.htmlElement.dataset.animateOnce) {
-      this._animateOnce = this.htmlElement.dataset.animateOnce === "true";
+    if (animateOnce) {
+      this._animateOnce = animateOnce === "true";
     }
 
-    if (this.htmlElement.dataset.animateClass) {
-      this._animateClass = this.htmlElement.dataset.animateClass;
+    var animateClass = this._htmlElement.dataset.animateClass;
+
+    if (animateClass) {
+      this._animateClass = animateClass;
     }
 
-    if (this.htmlElement.dataset.animateThreshold) {
-      this._animateThreshold = parseFloat(this.htmlElement.dataset.animateThreshold);
+    var animateThreshold = this._htmlElement.dataset.animateThreshold;
+
+    if (animateThreshold) {
+      this._animateThreshold = parseFloat(animateThreshold);
     }
 
+    var animateRootMargin = this._htmlElement.dataset.animateRootMargin;
+
+    if (animateRootMargin) {
+      this._animateRootMargin = animateRootMargin;
+    }
+
+    var animateDelaySeconds = this._htmlElement.dataset.animateDelaySeconds;
+
+    if (animateDelaySeconds) {
+      this._animateDelaySeconds = parseFloat(animateDelaySeconds);
+    }
+
+    this._animatorDelay = new AnimatorDelay(this._animateDelaySeconds, this.onAnimationCanPlay.bind(this));
     this.observer = new IntersectionObserver(this.onIntersectionCallback.bind(this), {
-      rootMargin: "0px",
-      threshold: this.animateThreshold
+      rootMargin: this._animateRootMargin,
+      threshold: this._animateThreshold
     });
-    this.observer.observe(this.htmlElement);
+    this.observer.observe(this._htmlElement);
   }
 
   var _proto = AnimationElement.prototype;
 
   _proto.onIntersectionCallback = function onIntersectionCallback(entries, observer) {
-    if (this.animationPlayedOnce === true && this.animateOnce === true) {
+    if (this._hasPlayedOnce === true && this._animateOnce === true) {
       // Configured to play the animation once, no need to keep the observer
       return observer.disconnect();
     }
@@ -180,59 +221,37 @@ var AnimationElement = /*#__PURE__*/function () {
     for (var i = 0; i < entries.length; i++) {
       var entry = entries[i];
 
-      if (entry.isIntersecting === true && this.animationPlaying === false) {
+      if (entry.isIntersecting === true && entry.intersectionRatio > 0) {
         this.play();
       } else {
-        this.reset();
+        this.finish();
       }
     }
   };
 
   _proto.play = function play() {
-    this.animationPlaying = true;
-    this.animationPlayedOnce = true;
-    this.htmlElement.classList.add(this.animateClass);
-    this.htmlElement.addEventListener("animationcancel", this.onAnimationComplete.bind(this), false);
-    this.htmlElement.addEventListener("animationend", this.onAnimationComplete.bind(this), false);
+    this._animatorDelay.start();
   };
 
-  _proto.onAnimationComplete = function onAnimationComplete() {
-    this.animationPlaying = false;
-    this.htmlElement.removeEventListener("animationcancel", this.onAnimationComplete.bind(this), false);
-    this.htmlElement.removeEventListener("animationend", this.onAnimationComplete.bind(this), false);
+  _proto.onAnimationCanPlay = function onAnimationCanPlay() {
+    console.log("onAnimationCanPlay");
+
+    this._htmlElement.classList.add(this._animateClass);
+
+    this._hasPlayedOnce = true;
   };
 
-  _proto.reset = function reset() {
-    this.htmlElement.classList.remove(this.animateClass);
-    this.htmlElement.removeEventListener("animationcancel", this.onAnimationComplete.bind(this), false);
-    this.htmlElement.removeEventListener("animationend", this.onAnimationComplete.bind(this), false);
+  _proto.finish = function finish() {
+    this._htmlElement.classList.remove(this._animateClass);
   };
 
   _proto.dispose = function dispose() {
     this.observer.disconnect();
   };
 
-  _createClass(AnimationElement, [{
-    key: "animateOnce",
-    get: function get() {
-      return this._animateOnce;
-    }
-  }, {
-    key: "animateThreshold",
-    get: function get() {
-      return this._animateThreshold;
-    }
-  }, {
-    key: "animateClass",
-    get: function get() {
-      return this._animateClass;
-    }
-  }, {
-    key: "htmlElement",
-    get: function get() {
-      return this._htmlElement;
-    }
-  }]);
+  _proto.update = function update(deltaTime) {
+    this._animatorDelay.update(deltaTime);
+  };
 
   return AnimationElement;
 }();
@@ -240,6 +259,8 @@ var AnimationElement = /*#__PURE__*/function () {
 var ScrollAnimator = /*#__PURE__*/function () {
   function ScrollAnimator() {
     this.animationElements = [];
+    this.requestAnimationFrameRunning = false;
+    this.then = 0;
   }
   /**
    * Create observers from a NodeListOf<HTMLElement>
@@ -252,6 +273,12 @@ var ScrollAnimator = /*#__PURE__*/function () {
 
   _proto.create = function create(elements) {
     this.dispose();
+
+    if (this.requestAnimationFrameRunning === false) {
+      window.requestAnimationFrame(this.update.bind(this));
+    }
+
+    this.requestAnimationFrameRunning = true;
 
     for (var i = 0; i < elements.length; i++) {
       var htmlElement = elements[i];
@@ -271,6 +298,18 @@ var ScrollAnimator = /*#__PURE__*/function () {
     this.animationElements = [];
   };
 
+  _proto.update = function update(now) {
+    now *= 0.001;
+    var deltaTime = now - this.then;
+
+    for (var i = 0; i < this.animationElements.length; i++) {
+      this.animationElements[i].update(deltaTime);
+    }
+
+    this.then = now;
+    requestAnimationFrame(this.update.bind(this));
+  };
+
   return ScrollAnimator;
 }();
 
@@ -285,6 +324,6 @@ Object.defineProperty(exports, "__esModule", {
 var _1 = require("../.");
 
 var scrollAnimator = new _1.ScrollAnimator();
-scrollAnimator.create(document.querySelectorAll("[data-animate]"));
+scrollAnimator.create(document.querySelectorAll(".js-animate"));
 },{"../.":"ClzE"}]},{},["QCba"], null)
-//# sourceMappingURL=/example.6fe2a491.js.map
+//# sourceMappingURL=/example.312895b9.js.map
