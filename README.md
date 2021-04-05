@@ -18,33 +18,33 @@ npm install simple-scroll-animate --save
 ```
 
 Supply the list of HTML elements you are wanting to track in the viewport and animate. 
-    ```js
-    const scrollAnimator = new ScrollAnimator();
-    scrollAnimator.create(document.querySelectorAll(".animate"));
-    ```
+```js
+const scrollAnimator = new ScrollAnimator();
+scrollAnimator.create(document.querySelectorAll(".animate"));
+```
 
 Add `data-animate-class='your-css-class-name'` to your html element. Pass in the CSS class to be applied when the element comes into view. 
     [See the full list of options here.](#configuration)
-    ```html
-    <div class="animate" data-animate-class="animate-fade-in">
-        Fancy fade in animation!
-    </div>
-    ```
-    ```css
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
+```html
+<div class="animate" data-animate-class="animate-fade-in">
+    Fancy fade in animation!
+</div>
+```
+```css
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
     }
+    100% {
+        opacity: 1;
+    }
+}
 
-    .animate-fade-in 
-    {
-        animation: fadeIn .5s linear both;
-    }
-    ```
+.animate-fade-in 
+{
+    animation: fadeIn .5s linear both;
+}
+```
 ## Examples & Demo
 For a full list of examples, [view an example](./example).  To view a demo, [click here](https://grantbartlett.github.io/simple-scroll-animate/)
 
