@@ -1,6 +1,9 @@
-[![npm version](https://badge.fury.io/js/simple-scroll-animate.svg)](https://badge.fury.io/js/simple-scroll-animate)
+![Logo](./example/logo.png)
 
 # Simple Scroll Animate
+
+[![npm version](https://badge.fury.io/js/simple-scroll-animate.svg)](https://badge.fury.io/js/simple-scroll-animate)
+
 
 A lightweight library that allows you to add animation classes to elements as they appear in the viewport. Make a fancy animation play as you scroll to it.
 
