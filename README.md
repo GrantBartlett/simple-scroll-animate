@@ -11,17 +11,19 @@ Under the hood, it simply utilises the Intersection Observer API and applies you
 
 ## 🚀 Getting started
 
-1. Install with npm or yarn
+Install with npm or yarn
+
 ```bash
 npm install simple-scroll-animate --save
 ```
 
-2. Supply the list of HTML elements you are wanting to track in the viewport and animate. 
+Supply the list of HTML elements you are wanting to track in the viewport and animate. 
     ```js
     const scrollAnimator = new ScrollAnimator();
     scrollAnimator.create(document.querySelectorAll(".animate"));
     ```
-3. Add `data-animate-class='your-css-class-name'` to your html element. Pass in the CSS class to be applied when the element comes into view. 
+
+Add `data-animate-class='your-css-class-name'` to your html element. Pass in the CSS class to be applied when the element comes into view. 
     [See the full list of options here.](#configuration)
     ```html
     <div class="animate" data-animate-class="animate-fade-in">
