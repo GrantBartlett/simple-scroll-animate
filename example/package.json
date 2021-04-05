@@ -7,9 +7,7 @@
     "start": "parcel index.html --no-cache",
     "build": "parcel build index.html --out-dir ../docs --no-minify --no-cache"
   },
-  "dependencies": {
-    "react-app-polyfill": "^1.0.0"
-  },
+  "dependencies": {},
   "alias": {},
   "devDependencies": {
     "parcel": "^1.12.3",
