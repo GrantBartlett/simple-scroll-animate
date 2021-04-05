@@ -3,6 +3,7 @@ import { AnimationElement } from "./AnimationElement";
 export class ScrollAnimator 
 {
     private animationElements: Array<AnimationElement> = [];
+    private requestAnimationFrameRunning: boolean = false;
 
     constructor()
     {
@@ -16,6 +17,13 @@ export class ScrollAnimator
     public create(elements: NodeListOf<HTMLElement>): void
     {
         this.dispose();
+
+        if (this.requestAnimationFrameRunning === false)
+        {
+            window.requestAnimationFrame(this.update.bind(this));
+        }
+
+        this.requestAnimationFrameRunning = true;
 
         for (let i = 0; i < elements.length; i++)
         {
@@ -35,5 +43,21 @@ export class ScrollAnimator
             this.animationElements[i].dispose();
         }
         this.animationElements = [];
+    }
+
+
+    private then: number = 0;
+    private update(now: number): void
+    {
+        now *= 0.001;
+        const deltaTime: number = (now - this.then);
+
+        for (let i = 0; i < this.animationElements.length; i++)
+        {
+            this.animationElements[i].update(deltaTime);
+        }
+
+        this.then = now;
+        requestAnimationFrame(this.update.bind(this));
     }
 }
