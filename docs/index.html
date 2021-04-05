@@ -5,303 +5,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Animate Scroll</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <style>
-        /* Just some basic demo page styling */
-        html,
-        body {
-            background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-            font-family: 'Roboto', sans-serif;
-            overflow-x: hidden;
-            padding: 1rem;
-        }
-
-        a {
-            text-decoration: underline;
-            color: #10562d;
-            font-size: 1.4rem;
-        }
-
-        .content {
-            padding: 1rem;
-            font-size: 1.4rem;
-            line-height: 2rem;
-            color: #10562d;
-            border-radius: 4px;
-            width: 800px;
-            max-width: 100%;
-        }
-
-        .intro {
-            margin-top: 10rem;
-            margin-bottom: 10rem;
-        }
-
-        img {
-            max-width: 100%;
-        }
-    </style>
-
-    <!-- Animations from https://animista.net/ -->
-    <link rel="stylesheet" href="animations.75408983.css">
-
-    <style>
-        .content {
-            transition: ease-in-out opacity 350ms;
-        }
-
-        /* Default animate in and out class if not specified */
-        .animate-in {
-            opacity: 1;
-        }
-
-        .animate-out {
-            opacity: 0;
-        }
-
-        /* Default states before animations are applied */
-        .default-fade-in-state {
-            opacity: 0;
-        }
-
-        .default-fade-in-state.animate-fade-in {
-            opacity: 1;
-        }
-
-        .default-blur-state {
-            filter: blur(4px);
-        }
-
-        /* Animations used in demos below */
-        .animate-in-vibrate {
-            animation: vibrate .5s linear both;
-        }
-
-        .animate-in-blur {
-            animation: blurIn 0.9s linear both;
-        }
-
-        .animate-in-puff {
-            animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-        }
-    </style>
-    <noscript>
-        .default-blur-state {
-        filter: blur(0px);
-        }
-
-        .default-fade-in-state {
-        opacity: 1;
-        }
-    </noscript>
+    <link rel="stylesheet" href="demo-page-styles.79095f78.css">
+    <link rel="stylesheet" href="animations.32a530c6.css">
+    <title>Demo</title>
 </head>
 
 <body>
-    <div class="content intro">
-        <h1>Simple Scroll Animate</h1>
-        <p>
-            A lightweight library that allows you to add animation classes to elements as they appear in the
-            viewport. Make a fancy animation play as you scroll to it.
-        </p>
-        <a href="https://github.com/GrantBartlett/simple-scroll-animate">View on GitHub</a>
-    </div>
 
-    <div data-animate-class="animate-fade-in" class="content default-fade-in-state js-animate"
-        data-animate-threshold="0.3">
-        <h3>Animation - fade in</h3>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
+    <h1>Simple Scroll Animate Examples</h1>
+    <p>
+        Below are a few examples using the <a href="https://github.com/GrantBartlett/simple-scroll-animate"
+            title="Link to simple scroll animate library">Simple Scroll Animate</a> library.
+    </p>
 
-        <div>
-            <img src="https://picsum.photos/seed/picsum/720/720" alt="Loremipsum image">
-        </div>
-    </div>
+    <button class="js-dispose-all" title="Dispose of all animations">
+        Dispose of animations (Stops all observers)
+    </button>
 
-    <div class="content">
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
+    <div>
+        <h1 class="animate js-animate" data-animate-class="animate-bounce-in-top" data-animate-delay-seconds="0.5">
+            Bounce in
+        </h1>
 
-        <div>
-            <img src="https://picsum.photos/seed/picsum/720/450" alt="Loremipsum image">
-        </div>
-    </div>
+        <p class="animate js-animate" data-animate-class="animate-bounce-in-top" data-animate-delay-seconds="1.2">
 
-    <div class="content default-blur-state js-animate" data-animate-class="animate-in-blur">
-        <h3>Animation - blur to focus</h3>
-
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, dolores quos quisquam accusamus tempore
+            sint
+            sequi doloremque earum? Perspiciatis officiis similique soluta eos. Facere eveniet reprehenderit
+            reiciendis
+            laboriosam. Eaque, ipsam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, dolores quos
+            quisquam accusamus tempore sint
+            sequi doloremque earum? Perspiciatis officiis similique soluta eos. Facere eveniet reprehenderit
+            reiciendis
+            laboriosam. Eaque, ipsam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, dolores quos
+            quisquam accusamus tempore sint
+            sequi doloremque earum? Perspiciatis officiis similique soluta eos. Facere eveniet reprehenderit
+            reiciendis
+            laboriosam. Eaque, ipsam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, dolores quos
+            quisquam accusamus tempore sint
+            sequi doloremque earum? Perspiciatis officiis similique soluta eos. Facere eveniet reprehenderit
+            reiciendis
+            laboriosam. Eaque, ipsam.
         </p>
     </div>
 
-    <div class="content">
+    <div class="animate js-animate" data-animate-class="animate-fade-in" data-animate-threshold="0.1">
+        <h1>Fade in</h1>
         <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, dolores quos quisquam accusamus tempore sint
+            sequi doloremque earum? Perspiciatis officiis similique soluta eos. Facere eveniet reprehenderit reiciendis
+            laboriosam. Eaque, ipsam.
         </p>
+        <img src="https://picsum.photos/id/10/650/400">
     </div>
-
-    <div class="content">
+    <div class="animate js-animate" data-animate-class="animate-fade-in">
+        <h1>Fade and bounce in</h1>
         <p>
 
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, dolores quos quisquam accusamus tempore sint
+            sequi doloremque earum? Perspiciatis officiis similique soluta eos. Facere eveniet reprehenderit reiciendis
+            laboriosam. Eaque, ipsam.
         </p>
+        <img src="https://picsum.photos/id/11/650/400" class="animate js-animate"
+            data-animate-class="animate-bounce-in-top" data-animate-delay-seconds="0.5">
     </div>
-
-    <div class="content js-animate" data-animate-class="animate-in-vibrate">
-        <h3>Animation - shake</h3>
+    <div class="animate js-animate" data-animate-class="animate-fade-in" data-animate-threshold="0.1">
+        <h1>Fade and bounce in</h1>
         <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, dolores quos quisquam accusamus tempore sint
+            sequi doloremque earum? Perspiciatis officiis similique soluta eos. Facere eveniet reprehenderit reiciendis
+            laboriosam. Eaque, ipsam.
         </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
+        <img src="https://picsum.photos/id/12/650/400" class="animate js-animate"
+            data-animate-class="animate-bounce-in-top" data-animate-delay-seconds="0.5">
     </div>
-
-    <div class="content">
-        <h3>Animation - animate in puff (with a delay on each)</h3>
-        <p class="js-animate" data-animate-class="animate-in-puff" data-animate-threshold="0.1"
-            data-animate-delay-seconds="0.2">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p class="js-animate" data-animate-class="animate-in-puff" data-animate-threshold="0.1"
-            data-animate-delay-seconds="0.3">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-        <p class="js-animate" data-animate-class="animate-in-puff" data-animate-threshold="0.1"
-            data-animate-delay-seconds="0.4">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-
-        <div class="js-animate" data-animate-class="animate-in-puff" data-animate-threshold="0.1"
-            data-animate-delay-seconds="0.5">
-            <img src="https://picsum.photos/seed/picsum/720/450" alt="Loremipsum image">
-        </div>
-    </div>
-
-    <div class="content">
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-    </div>
-
-    <div class="content">
-        <p>
-
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-    </div>
-
-    <div class="content">
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-    </div>
-
-    <div class="content">
-        <p>
-
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni id hic dolorem molestiae unde itaque
-            praesentium! Dolorem dolores iste quia quas, maiores commodi ipsam illo asperiores, aliquid reprehenderit
-            fuga.
-        </p>
-    </div>
-
-    <script src="example.312895b9.js"></script>
+    <script src="example.a56ed389.js"></script>
 </body>
 
 </html>
