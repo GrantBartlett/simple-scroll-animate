@@ -41,7 +41,7 @@ npm install simple-scroll-animate --save
     }
     ```
 ## Examples & Demo
-For a full list of examples, [go to the examples](/Examples).  To view a demo, [click here](/demo)
+For a full list of examples, [view an example](./example).  To view a demo, [click here](https://grantbartlett.github.io/simple-scroll-animate/)
 
 
 ## Configuration
